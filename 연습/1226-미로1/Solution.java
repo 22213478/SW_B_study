@@ -35,6 +35,7 @@ import java.io.FileInputStream;
    이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
  */
 class Solution {
+
   public static void main(String args[]) throws Exception {
     /*
      * 아래의 메소드 호출은 앞으로 표준 입력(키보드) 대신 input.txt 파일로부터 읽어오겠다는 의미의 코드입니다.
@@ -49,73 +50,66 @@ class Solution {
      * 표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다.
      */
     Scanner sc = new Scanner(System.in);
-    int T;
-    T = sc.nextInt();
+
     /*
      * 여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
      */
 
     for (int test_case = 1; test_case <= 10; test_case++) {
+      int T;
+      T = sc.nextInt();
       int[][] maps = new int[16][16];
-      int x=0;
-      int y=0;
-      int goal_x=0;
-      int goal_y=0;
-      int[] dx = {0, 0, -1, 1};
-      int[] dy = {-1, 1, 0, 0};
-      int answer=0;
+      int x = 0;
+      int y = 0;
+      int goal_x = 0;
+      int goal_y = 0;
+      int[] dx = { 0, 0, -1, 1 };
+      int[] dy = { -1, 1, 0, 0 };
+      int answer = 0;
       boolean[][] visited = new boolean[16][16];
-      
-      
+
       ArrayDeque<int[]> q = new ArrayDeque<>();
-      
-      
-      
 
       for (int i = 0; i < 16; i++) {
         String line = sc.next();
         for (int j = 0; j < 16; j++) {
           maps[i][j] = line.charAt(j) - '0';
-          if(maps[i][j]==2){
+          if (maps[i][j] == 2) {
             x = i;
             y = j;
           }
 
         }
       }
-      q.offer(new int[]{x, y});
-      visited[x][y]=true;
-      while(!q.isEmpty()){
+      q.offer(new int[] { x, y });
+      visited[x][y] = true;
+      while (!q.isEmpty()) {
         int[] cur = q.poll();
-        x=cur[0];
-        y=cur[1];
+        x = cur[0];
+        y = cur[1];
 
-        for(int i=0; i<4; i++){
-          int nx=x+dx[i];
-          int ny=y+dy[i];
-          if(maps[nx][ny]==3){
-            System.out.println("#"+test_case + " " + 1);
-            answer=1;
+        for (int i = 0; i < 4; i++) {
+          int nx = x + dx[i];
+          int ny = y + dy[i];
+          if (maps[nx][ny] == 3) {
+            System.out.println("#" + test_case + " " + 1);
+            answer = 1;
 
             break;
-          }
-          else if(maps[nx][ny]==0 && visited[nx][ny] ==false){
-            visited[nx][ny]=true;
-            q.offer(new int[]{nx, ny});
+          } else if (maps[nx][ny] == 0 && visited[nx][ny] == false) {
+            visited[nx][ny] = true;
+            q.offer(new int[] { nx, ny });
 
           }
         }
-        if(answer==1){
+        if (answer == 1) {
           break;
         }
-        
+
       }
-      if(answer==0){
-        System.out.println("#"+test_case + " " + 0);
+      if (answer == 0) {
+        System.out.println("#" + test_case + " " + 0);
       }
-
-
-
 
       /////////////////////////////////////////////////////////////////////////////////////////////
       /*
