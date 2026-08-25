@@ -2,7 +2,8 @@
 *.jar
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/settings.json
 *.log
 
 # Pro 기출 원문 (사외 공유 금지). 템플릿은 루트 기출.md만 커밋

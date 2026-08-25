@@ -188,3 +188,5 @@ README.md                 ← 로드맵
 다음 기출이 생기면 `본문제/문제이름/` 만 추가한다.  
 그 기출을 위해 번호 문제를 더 풀면 `연습/번호-이름/`에 둔다.
 
+Java 빨간 줄(패키지 불일치)이 나면 `.vscode/settings.json`의 `java.project.sourcePaths`에 그 폴더를 한 줄 더 넣는다. SWEA는 패키지를 쓰지 않는다.
+
